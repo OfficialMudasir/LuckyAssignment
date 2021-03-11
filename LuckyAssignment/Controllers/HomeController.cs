@@ -24,18 +24,22 @@ namespace LuckyAssignment.Controllers
         [HttpPost]
         public async Task<ActionResult> Index(Lucky lucky)
         {
+            
             Lucky luck = new Lucky();
             using(var client = new HttpClient())
             {
-                StringContent content = new StringContent(JsonConvert.SerializeObject(luck), Encoding.UTF8, "application/json");
-                using (var response = await client.PostAsync("localhost:44328/api/Lucky", content))
+                StringContent content = new StringContent(JsonConvert.SerializeObject(lucky), Encoding.UTF8, "application/json");
+                using (var response = await client.PostAsync("https://localhost:44328/api/Lucky/lucky", content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    luck = JsonConvert.DeserializeObject<Lucky>(apiResponse);
+                    lucky.result = Convert.ToBoolean(apiResponse);
+                    // luck = JsonConvert.DeserializeObject<Lucky>(apiResponse);
                 }
             }
             
-            return View(luck);
+
+
+            return View(lucky);
         }
     }
 }

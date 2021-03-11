@@ -14,21 +14,23 @@ namespace LuckyAssignment.Controllers
     public class LuckyController : ControllerBase
     {
         // GET: api/<LuckyController>
-        [HttpGet]
-        public ActionResult Get(Lucky lucky)
+        [HttpPost("lucky")]
+        public ActionResult Post([FromBody]Lucky lucky)
         {
-            //these var's are just for test purpose
-            var a = 10;
-            var b = 8;
+            
 
-            //var a = lucky.a;
-            //var b = lucky.b;
+            var a = lucky.a;
+            var b = lucky.b;
 
             var sum = a + b;
             var sub = a - b;
+
+            var result = lucky.result;
+            result = false;
             if(a == 8 || b== 8 || sum == 8 || sub == 8)
             {
-                return Ok(true);
+                result = true;
+                return Ok(result);
             }
             else if(a == 0 || b == 0)
             {
@@ -36,26 +38,12 @@ namespace LuckyAssignment.Controllers
             }
             else
             {
-                return Ok(false);
+                return Ok(result);
             }
             
         }
 
         
-        [HttpPost]
-        public ActionResult Post(Lucky lucky)
-        {
-            
-            if(lucky.a == 0 || lucky.b == 0)
-            {
-                return BadRequest("Value must not be zero(0)");
-            }
-            else
-            {
-                return Ok(lucky.result);
-            }
-            
-        }
            
         
     }
