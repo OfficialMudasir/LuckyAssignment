@@ -1,3 +1,4 @@
+using LuckyAssignment.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,6 +19,7 @@ namespace LuckyAssignment
         {
             services.AddMvc();
             services.AddControllersWithViews();
+            //services.AddSingleton<ILuckyRepo, MockLuckyRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

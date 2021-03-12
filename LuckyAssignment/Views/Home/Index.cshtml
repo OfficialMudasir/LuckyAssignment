@@ -3,7 +3,7 @@
     Layout = "_Layout";
     ViewBag.Title = "Index";
 }
-<form asp-controller="Home">
+<form asp-controller="Home" asp-action="Index">
     <div class="form-group">
         <label>a:</label>
         <input id="a" name="a" type="number" />
@@ -14,16 +14,22 @@
     </div>
 
     <div>
-        <button asp-controller="Home" asp-action="Index" type="submit" class="btn btn-primary">Go</button>
+        <button asp-controller="Home" asp-action="Show" type="submit" class="btn btn-primary">Go</button>
     </div>
-
-    @if (Model.result != null)
-    {
-        <div class="form-group">
-            <label id="result" name="result">@Model.result</label>
-        </div>
-    }
+    
+    @*
+        @if (Model.result != null)
+        {
+            <div class="form-group">
+                <label id="result" name="result">@Model.result</label>
+            </div>
+        }
+    *@
 </form>
+
+<script runat="server">
+   
+</script>
 
 
 

@@ -5,6 +5,16 @@
     ViewBag.Title = "Show";
 }
 
+
+<form asp-controller="Home" asp-action="Show">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label>@Model.result</label>
+    </div>
+
+</form>
+
 @*
 
     @if (Model.result == true || Model.result == false)
