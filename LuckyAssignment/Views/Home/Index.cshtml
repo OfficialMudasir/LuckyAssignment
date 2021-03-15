@@ -17,14 +17,10 @@
         <button asp-controller="Home" asp-action="Show" type="submit" class="btn btn-primary">Go</button>
     </div>
     
-    @*
-        @if (Model.result != null)
-        {
-            <div class="form-group">
-                <label id="result" name="result">@Model.result</label>
-            </div>
-        }
-    *@
+     @if (ViewBag.result != null)
+    {
+        @Html.Label((string)ViewBag.result)
+    }
 </form>
 
 <script runat="server">
