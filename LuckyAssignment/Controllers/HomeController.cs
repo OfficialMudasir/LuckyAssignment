@@ -34,6 +34,8 @@ namespace LuckyAssignment.Controllers
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     lucky.result = Convert.ToBoolean(apiResponse);
                     // luck = JsonConvert.DeserializeObject<Lucky>(apiResponse);
+                    
+                    ViewBag.result = lucky.result.ToString();
                 }
             }
             
@@ -42,39 +44,6 @@ namespace LuckyAssignment.Controllers
             return View(lucky);
         }
 
-
-       /*
-
-        [HttpGet]
-        public async Task<Lucky> GetApiResult()
-        {
-
-            Lucky lucky = new Lucky();
-            using (var client = new HttpClient())
-            {
-                //StringContent content = new StringContent(JsonConvert.SerializeObject(lucky), Encoding.UTF8, "application/json");
-                using (var response = await client.GetAsync("https://localhost:44328/api/Lucky"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string apiResponse = await response.Content.ReadAsStringAsync();
-                        lucky.result = Convert.ToBoolean(apiResponse);
-                        return lucky;
-
-                        //return JsonConvert.DeserializeObject<Lucky>(apiResponse);
-                    }
-                    return null;
-                }
-            }
-        }
-
-        
-        public async Task<IActionResult> Show()
-        {
-            var model = await GetApiResult();
-
-            return View();
-        }*/
     }
 
 }
